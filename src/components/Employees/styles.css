@@ -4,5 +4,10 @@
 }
 
 .card {
+    transition: scale 200ms ease-in-out;
     cursor: pointer;
+}
+.card:hover {
+    filter: brightness(95%);
+    scale: 1.05;
 }
