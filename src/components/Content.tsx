@@ -1,3 +1,7 @@
 export default function Content() {
-    return;
+    return (
+        <main>
+            <h1>Content</h1>
+        </main>
+    );
 }
