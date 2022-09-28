@@ -17,6 +17,7 @@ export default function Employees() {
   const [employees, setEmployees] = useState<Array<Employee>>(dummyData);
   const [selectedTeam, setSelectedTeam] = useState<string>('TeamA');
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function handleCardClicked(event: any) {
     const transformedEmployees = employees.map((e) =>
       e.id === parseInt(event.currentTarget.id)
