@@ -1,33 +1,18 @@
-import { useState } from 'react';
-import { dummyData } from './dummy-data';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import femaleProfile from '../../assets/images/femaleProfile.jpg';
 import maleProfile from '../../assets/images/maleProfile.jpg';
+import Employee from '../../models/employee';
 import './styles.css';
 
-interface Employee {
-  id: number;
-  fullName: string;
-  designation: string;
-  gender: string;
-  teamName: string;
+interface EmployeesProps {
+  employees: Array<Employee>;
+  selectedTeam: string;
+  handleCardClicked: (event: any) => void;
+  handleTeamSelected: (event: any) => void;
 }
 
-export default function Employees() {
+export default function Employees(props: EmployeesProps) {
   const teams = ['TeamA', 'TeamB', 'TeamC', 'TeamD'];
-  const [employees, setEmployees] = useState<Array<Employee>>(dummyData);
-  const [selectedTeam, setSelectedTeam] = useState<string>('TeamA');
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function handleCardClicked(event: any) {
-    const transformedEmployees = employees.map((e) =>
-      e.id === parseInt(event.currentTarget.id)
-        ? e.teamName === selectedTeam
-          ? { ...e, teamName: '' }
-          : { ...e, teamName: selectedTeam }
-        : e
-    );
-    setEmployees(transformedEmployees);
-  }
 
   return (
     <main className="container">
@@ -35,8 +20,8 @@ export default function Employees() {
         <div className="col-6">
           <select
             className="form-select form-select-lg"
-            value={selectedTeam}
-            onChange={(e) => setSelectedTeam(e.target.value)}
+            value={props.selectedTeam}
+            onChange={(e) => props.handleTeamSelected(e)}
           >
             {teams.map((t, index) => (
               <option key={index} value={index}>
@@ -49,14 +34,16 @@ export default function Employees() {
       <div className="row justify-content-center mt-3 mb-3">
         <div className="col-8">
           <div className="card-collection">
-            {employees.map((e, index) => (
+            {props.employees.map((e, index) => (
               <div
                 key={index}
                 id={e.id.toString()}
                 className={
-                  e.teamName === selectedTeam ? 'card m-2 standout' : 'card m-2'
+                  e.teamName === props.selectedTeam
+                    ? 'card m-2 standout'
+                    : 'card m-2'
                 }
-                onClick={handleCardClicked}
+                onClick={props.handleCardClicked}
               >
                 {e.gender === 'male' ? (
                   <img src={maleProfile} className="card-img-top" />
