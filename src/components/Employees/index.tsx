@@ -24,7 +24,7 @@ export default function Employees(props: EmployeesProps) {
             onChange={(e) => props.handleTeamSelected(e)}
           >
             {teams.map((t, index) => (
-              <option key={index} value={index}>
+              <option key={index} value={t}>
                 {t}
               </option>
             ))}

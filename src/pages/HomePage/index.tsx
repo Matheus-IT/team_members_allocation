@@ -25,9 +25,16 @@ export default function HomePage() {
     setSelectedTeam(event.target.value);
   }
 
+  function getTeamMembersCount(): number {
+    return employees.filter((e) => e.teamName === selectedTeam).length;
+  }
+
   return (
     <div>
-      <Header />
+      <Header
+        selectedTeam={selectedTeam}
+        teamMembersCount={getTeamMembersCount()}
+      />
       <Employees
         employees={employees}
         selectedTeam={selectedTeam}
@@ -38,3 +45,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+// Stopped the video at 1:04:30
