@@ -7,6 +7,8 @@ import { dummyData } from './components/Employees/dummy-data';
 import Employees from './components/Employees';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AppRoutes from './app-routes';
+import Nav from './components/Nav';
 
 export default function App() {
   const [employees, setEmployees] = useState<Array<Employee>>(
@@ -45,13 +47,14 @@ export default function App() {
 
   return (
     <Router>
+      <Nav />
       <Header
         selectedTeam={selectedTeam}
         teamMembersCount={getTeamMembersCount()}
       />
       <Routes>
         <Route
-          path="/"
+          path={AppRoutes.home}
           element={
             <Employees
               employees={employees}
@@ -61,7 +64,10 @@ export default function App() {
             />
           }
         ></Route>
-        <Route path="/grouped" element={<GroupedTeamMembers />}></Route>
+        <Route
+          path={AppRoutes.groupedTeamMembers}
+          element={<GroupedTeamMembers />}
+        ></Route>
       </Routes>
       <Footer />
     </Router>
