@@ -1,7 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import HomePage from './pages/HomePage/index';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import App from './App';
 import './global.css';
 
 const root = ReactDOM.createRoot(
@@ -9,6 +10,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <HomePage />
+    <App />
   </React.StrictMode>
 );

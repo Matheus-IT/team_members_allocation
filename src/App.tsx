@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
-import Employees from '../../components/Employees';
-import { dummyData } from '../../components/Employees/dummy-data';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import Employee from '../../models/employee';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import GroupedTeamMembers from './components/GroupedTeamMembers';
+import Employee from './models/employee';
+import { dummyData } from './components/Employees/dummy-data';
+import Employees from './components/Employees';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-export default function HomePage() {
+export default function App() {
   const [employees, setEmployees] = useState<Array<Employee>>(
     JSON.parse(localStorage.getItem('employees') ?? '') || dummyData
   );
@@ -42,20 +44,26 @@ export default function HomePage() {
   }, [selectedTeam]);
 
   return (
-    <div>
+    <Router>
       <Header
         selectedTeam={selectedTeam}
         teamMembersCount={getTeamMembersCount()}
       />
-      <Employees
-        employees={employees}
-        selectedTeam={selectedTeam}
-        handleCardClicked={handleCardClicked}
-        handleTeamSelected={handleTeamSelected}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Employees
+              employees={employees}
+              selectedTeam={selectedTeam}
+              handleCardClicked={handleCardClicked}
+              handleTeamSelected={handleTeamSelected}
+            />
+          }
+        ></Route>
+        <Route path="/grouped" element={<GroupedTeamMembers />}></Route>
+      </Routes>
       <Footer />
-    </div>
+    </Router>
   );
 }
-
-// Stopped the video at 1:11:44
