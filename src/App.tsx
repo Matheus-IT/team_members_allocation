@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import AppRoutes from './app-routes';
 import Nav from './components/Nav';
+import { NotFoundPage } from './components/NotFoundPage';
 
 export default function App() {
   const [employees, setEmployees] = useState<Array<Employee>>(
@@ -63,11 +64,12 @@ export default function App() {
               handleTeamSelected={handleTeamSelected}
             />
           }
-        ></Route>
+        />
         <Route
           path={AppRoutes.groupedTeamMembers}
           element={<GroupedTeamMembers />}
-        ></Route>
+        />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </Router>

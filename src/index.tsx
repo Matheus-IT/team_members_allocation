@@ -13,3 +13,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Video paused at 1:21:09
