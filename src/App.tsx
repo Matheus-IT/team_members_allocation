@@ -67,7 +67,12 @@ export default function App() {
         />
         <Route
           path={AppRoutes.groupedTeamMembers}
-          element={<GroupedTeamMembers />}
+          element={
+            <GroupedTeamMembers
+              employees={employees}
+              selectedTeam={selectedTeam}
+            />
+          }
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

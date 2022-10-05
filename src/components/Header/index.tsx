@@ -8,7 +8,8 @@ export default function Header(props: HeaderProps) {
     <header className="container mt-3 mb-4 text-center">
       <h1>Team members allocation</h1>
       <h3>
-        {props.selectedTeam} has {props.teamMembersCount} members
+        {props.selectedTeam} has {props.teamMembersCount} member
+        {props.teamMembersCount > 1 && 's'}
       </h3>
     </header>
   );
