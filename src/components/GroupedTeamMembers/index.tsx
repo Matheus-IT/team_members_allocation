@@ -65,10 +65,10 @@ export default function GroupedTeamMembers(props: GroupedTeamMembersProps) {
     <main className="container">
       {groupedEmployees.map((group) => {
         return (
-          <div key={group.team} className="card mt-2 team-group-card">
+          <div key={group.team} className="mt-2 team-group-card">
             <h4
               id={group.team}
-              className="card-header text-secondary bg-white"
+              className="text-secondary mb-0"
               onClick={handleTeamClick}
             >
               Team Name: {group.team}
@@ -83,7 +83,7 @@ export default function GroupedTeamMembers(props: GroupedTeamMembersProps) {
               {group.members.map((member) => {
                 return (
                   <div className="mt2">
-                    <h5 className="card-title mt-2">
+                    <h5 className="mt-2">
                       <span className="text-dark">
                         Full Name: {member.fullName}
                       </span>
