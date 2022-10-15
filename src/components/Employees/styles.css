@@ -9,7 +9,7 @@
 }
 .card:hover {
     filter: brightness(95%);
-    scale: 1.05;
+    scale: 1.02;
 }
 .card.standout {
   box-shadow: 0 0 0 2px;
